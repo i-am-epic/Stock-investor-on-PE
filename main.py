@@ -10,8 +10,8 @@ investments = []
 
 
 def line(self):
-    l = '-'*130
-    print('l'+'\n')
+    l = '-'*110
+    print(l+'\n')
 
 
 n = 1
@@ -24,7 +24,6 @@ class StockPrediction1:
         url = 'https://www.moneycontrol.com/india/stockpricequote/' + le
         print(url)
         self.comp_info(url)
-
 
     def comp_info(self, url):
         page = requests.get(url, headers=headers)
@@ -73,12 +72,12 @@ class StockPrediction1:
             tec_any = tec_any[277:290].split("\n")
             print(tec_any[0])
 
-            data = [x.text.strip() for x in soup.find_all('div', {'class': 'value_txtfr'})]
+            data = [x.text.strip()
+                    for x in soup.find_all('div', {'class': 'value_txtfr'})]
             print(data)
             if data == None:
                 continue
             pe = data[1]
-
 
             ipe = (data[5])
             if pe == '-':
@@ -102,7 +101,7 @@ class StockPrediction1:
                 print("GOOD TO INVEST")
                 # investments.append(title)
 
-                file1 = open("Invest_in_this_stocks1.txt", "a")
+                file1 = open("Invest_in_this_stocks.txt", "a")
 
                 # \n is placed to indicate EOL (End of Line)
                 file1.write(str(num))
@@ -112,7 +111,7 @@ class StockPrediction1:
                 file1.writelines(ltp)
                 file1.write("\n")
                 file1.write(
-                    "---------------------------------------------------------------------------------------------------------\n")
+                    "-"*120+"\n")
                 file1.close()
 
                 num += 1
@@ -132,7 +131,7 @@ if __name__ == '__main__':
     print("PRESS ANY KEY TO BEGIN.........")
 
     print(
-        "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        "\n"*50)
     test_list = [chr(x) for x in range(ord('a'), ord('z') + 1)]
 
     test_list.append("others")
@@ -140,7 +139,7 @@ if __name__ == '__main__':
     for le in test_list:
         #le = le.upper()
         StockPrediction1(le)
-        time.sleep(5)
+        time.sleep(1)
     line("")
     print('\n')
 
